@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:instagram_stories_flutter/models/constants.dart';
 
 import 'models/last_story_item.dart';
 import 'models/story_item.dart';
@@ -199,10 +200,12 @@ class _InnerStoryViewState extends State<InnerStoryView>
                   //     ),
                   //   ),
                   // ),
-                  Image.network(
-                    widget.allStories[widget.carouselIndex].storyItems[i].url,
+                  FadeInImage.memoryNetwork(
+                    image: widget
+                        .allStories[widget.carouselIndex].storyItems[i].url,
                     height: _size.height,
                     width: _size.width,
+                    placeholder: kTransparentImage,
                     // placeholder: 'placeholder',
                   ),
                   Positioned(
@@ -331,8 +334,10 @@ class _InnerStoryViewState extends State<InnerStoryView>
                     //   allStories: widget.allStories,
                     //   isBottomTitleVisible: false,
                     // ),
-                    child: Image.network(
-                        widget.allStories[widget.carouselIndex].url),
+                    child: FadeInImage.memoryNetwork(
+                      image: widget.allStories[widget.carouselIndex].url,
+                      placeholder: kTransparentImage,
+                    ),
                   ),
                 ),
                 title: Text(

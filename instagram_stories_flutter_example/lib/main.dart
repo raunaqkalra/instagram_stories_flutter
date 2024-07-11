@@ -108,7 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemBuilder: (context, index) => StoryViewIcon(
                   allStories: allStories,
                   index: index,
-                  lastOpenedStories: [],
+                  lastOpenedStories: lastOpenedStories,
+                  isUnopened: isUnopenedList[index],
                   onTap: (openedIndex) {
                     setState(() {
                       isUnopenedList[index] = false;

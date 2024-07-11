@@ -5,6 +5,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:instagram_stories_flutter/models/constants.dart';
 import 'package:instagram_stories_flutter/models/last_story_item.dart';
 import 'package:instagram_stories_flutter/models/story_item.dart';
 import 'package:instagram_stories_flutter/story_view_screen.dart';
@@ -76,7 +77,6 @@ class StoryViewIcon extends StatelessWidget {
                   padding: EdgeInsets.all(isUnopened ? 2 : 1),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    // border: Border.all(color: Colors.green),
                     gradient: isUnopened
                         ? const LinearGradient(
                             colors: [
@@ -97,22 +97,14 @@ class StoryViewIcon extends StatelessWidget {
                   ),
                   child: Container(
                     decoration: const BoxDecoration(
-                      //radius: context.k_64,
                       shape: BoxShape.circle,
-                      color: Color(0xff1E3551),
                     ),
-                  ),
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: ClipOval(
-                    child: Image.network(
-                      allStories[index].url,
-                      fit: BoxFit.cover,
-                      height: 68,
-                      width: 68,
+                    child: ClipOval(
+                      child: FadeInImage.memoryNetwork(
+                        image: allStories[index].url,
+                        fit: BoxFit.cover,
+                        placeholder: kTransparentImage,
+                      ),
                     ),
                   ),
                 ),
