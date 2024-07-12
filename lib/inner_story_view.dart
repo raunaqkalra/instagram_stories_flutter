@@ -142,7 +142,7 @@ class _InnerStoryViewState extends State<InnerStoryView>
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -210,16 +210,16 @@ class _InnerStoryViewState extends State<InnerStoryView>
                   FadeInImage.memoryNetwork(
                     image: widget
                         .allStories[widget.carouselIndex].storyItems[i].url,
-                    height: _size.height,
-                    width: _size.width,
+                    height: size.height,
+                    width: size.width,
                     placeholder: kTransparentImage,
                     // placeholder: 'placeholder',
                   ),
                   Positioned(
                     bottom: 0,
                     child: Container(
-                      height: _size.height / 2,
-                      width: _size.width,
+                      height: size.height / 2,
+                      width: size.width,
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
