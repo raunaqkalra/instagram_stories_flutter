@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
-import 'package:instagram_stories_flutter/models/constants.dart';
+import 'package:instagram_stories_flutter/constants/constants.dart';
 
 import 'models/last_story_item.dart';
 import 'models/story_item.dart';
@@ -13,12 +13,19 @@ class InnerStoryView extends StatefulWidget {
 
   final int carouselIndex;
 
+  ///stories to be displayed to the user
   final List<Stories> allStories;
 
+  ///this is used to store the last opened item by the user for each story
   final List<LastStoryItem> lastOpenedStories;
 
+  ///[CarouselSliderController] is required to switch the user to next page automatically
+  ///or when the user taps on left side of the story - moves backward
+  ///or when the user taps on right side of the story - moves forward
   final CarouselSliderController sliderController;
 
+  ///on story icon item tap
+  ///used to set story to be marked as seen by the user
   final void Function(int?)? onTap;
 
   const InnerStoryView({
@@ -343,17 +350,6 @@ class _InnerStoryViewState extends State<InnerStoryView>
                 title: Text(
                   widget.allStories[widget.carouselIndex].title,
                 ),
-                // subtitle: Text(
-                //   DateFormatUtils.formatDate(
-                //     widget.allStories[widget.carouselIndex].createdDate,
-                //   ),
-                //   style: ADTextStyle400.size12
-                //       .setFontSize(DimensSp.eleven)
-                //       .setTextColor(
-                //         context.adColors.whiteTextColor,
-                //       )
-                //       .setFontWeight(FontWeight.w300),
-                // ),
                 trailing: InkWell(
                   customBorder: const CircleBorder(),
                   onTap: () => Navigator.pop(context),

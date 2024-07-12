@@ -33,12 +33,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  ///used to store whether the story has been opened or not
   final List<bool> isUnopenedList = [];
 
   ///this is used to store the last opened item by the user for each story
   final List<LastStoryItem> lastOpenedStories = [];
 
-  var allStories = [
+  ///stories to be displayed to the user
+  final List<Stories> allStories = [
     Stories(
         'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_recharge.png',
         'Mobile Recharge', [

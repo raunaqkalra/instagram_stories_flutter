@@ -12,22 +12,21 @@ import 'package:instagram_stories_flutter/models/story_item.dart';
 ///this class is used to show the story.
 
 class StoryViewScreen extends StatefulWidget {
-  // ///currently tapped story
-  // final WidgetItem widgetItem;
-
   ///currently tapped index
   final int index;
 
+  ///stories to be displayed to the user
   final List<Stories> allStories;
 
+  ///this is used to store the last opened item by the user for each story
   final List<LastStoryItem> lastOpenedStories;
 
+  ///on story icon item tap
+  ///usually used to set story to be marked as seen by the user
   final Function(int?)? onTap;
 
   const StoryViewScreen({
     super.key,
-    // required this.stories,
-    // required this.widgetItem,
     required this.allStories,
     required this.index,
     required this.onTap,
@@ -35,10 +34,10 @@ class StoryViewScreen extends StatefulWidget {
   });
 
   @override
-  _StoryScreenState createState() => _StoryScreenState();
+  StoryScreenState createState() => StoryScreenState();
 }
 
-class _StoryScreenState extends State<StoryViewScreen> {
+class StoryScreenState extends State<StoryViewScreen> {
   int storyIndex = 0;
   final CarouselSliderController _sliderController = CarouselSliderController();
 

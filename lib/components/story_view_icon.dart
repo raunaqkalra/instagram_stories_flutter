@@ -5,28 +5,30 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:instagram_stories_flutter/models/constants.dart';
+import 'package:instagram_stories_flutter/constants/constants.dart';
 import 'package:instagram_stories_flutter/models/last_story_item.dart';
 import 'package:instagram_stories_flutter/models/story_item.dart';
 import 'package:instagram_stories_flutter/story_view_screen.dart';
 
 class StoryViewIcon extends StatelessWidget {
-  // ///main image to be displayed ain circle
-  // final WidgetItem widgetItem;
-
   ///whether the user has opened it already
   final bool isUnopened;
 
   ///current tapped story index
   final int index;
 
+  ///stories to be displayed to the user
   final List<Stories> allStories;
 
   ///this is used to store the last opened item by the user for each story
   final List<LastStoryItem> lastOpenedStories;
 
+  ///set to be true if we want to display the bottom title
+  ///default value set to true
   final bool isBottomTitleVisible;
 
+  ///on story icon item tap
+  ///used to set story to be marked as seen by the user
   final Function(int?)? onTap;
 
   const StoryViewIcon({
@@ -115,7 +117,7 @@ class StoryViewIcon extends StatelessWidget {
           if (isBottomTitleVisible)
             Text(
               allStories[index].title,
-              style: TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 12),
             ),
         ],
       ),
