@@ -1,6 +1,6 @@
 # instagram_stories_flutter
 
-Customisable instagram like stories for Flutter.
+Customisable instagram like stories with animation for Flutter.
 
 ## Features
 
@@ -12,6 +12,12 @@ Can add multiple stories.
 dart pub add instagram_stories_flutter
 
 ## Usage StoriesBuilder
+
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_default.png" width="240"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_partial_seen.png" width="240"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_complete_seen.png" width="240"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/story_page.png" width="240"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/story_animating.png" width="240"/>
 
 ```dart
 
@@ -64,15 +70,10 @@ Widget build(BuildContext context) {
   );
 }
 ```
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!
+
+Made with :heart: in India
