@@ -4,10 +4,10 @@ class StoryItem {
   final String url;
 
   /// title for a single item in story
-  final String title;
+  final String? title;
 
   /// date/subtitle for a single item in story
-  final String createdDate;
+  final String? createdDate;
 
   StoryItem({
     required this.url,

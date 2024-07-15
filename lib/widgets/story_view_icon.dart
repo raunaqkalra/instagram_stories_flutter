@@ -1,35 +1,35 @@
-/*
- * Copyright (c) 2022 .
- * All rights reserved.
- * Adani Digital Labs Confidential Information
- */
-
 import 'package:flutter/material.dart';
 import 'package:instagram_stories_flutter/constants/constants.dart';
 import 'package:instagram_stories_flutter/models/last_story_item.dart';
 import 'package:instagram_stories_flutter/models/story_item.dart';
-import 'package:instagram_stories_flutter/story_view_screen.dart';
+import 'package:instagram_stories_flutter/widgets/story_view_screen.dart';
 
+///Main story icon to open a story
 class StoryViewIcon extends StatelessWidget {
-  ///whether the user has opened it already
+  ///Whether the user has opened it already
   final bool isUnopened;
 
-  ///current tapped story index
+  ///Current tapped story index
   final int index;
 
-  ///stories to be displayed to the user
+  ///Stories to be displayed to the user
   final List<Stories> allStories;
 
-  ///this is used to store the last opened item by the user for each story
+  ///This is used to store the last opened item by the user for each story
   final List<LastStoryItem> lastOpenedStories;
 
-  ///set to be true if we want to display the bottom title
-  ///default value set to true
+  ///Set to be true if we want to display the bottom title
+  ///Default value set to true
   final bool isBottomTitleVisible;
 
-  ///on story icon item tap
-  ///used to set story to be marked as seen by the user
+  ///On story icon item tap
+  ///Used to set story to be marked as seen by the user
   final Function(int?)? onTap;
+
+  final TextStyle? outerTitleStyle;
+  final TextStyle? innerTitleStyle;
+  final TextStyle? innerSubtitleStyle;
+  final TextStyle? innerBottomStyle;
 
   const StoryViewIcon({
     super.key,
@@ -39,6 +39,10 @@ class StoryViewIcon extends StatelessWidget {
     required this.index,
     this.onTap,
     required this.lastOpenedStories,
+    required this.outerTitleStyle,
+    required this.innerTitleStyle,
+    required this.innerSubtitleStyle,
+    required this.innerBottomStyle,
   });
 
   @override
@@ -63,6 +67,9 @@ class StoryViewIcon extends StatelessWidget {
               index: index,
               allStories: allStories,
               onTap: onTap,
+              innerTitleStyle: innerTitleStyle,
+              innerSubtitleStyle: innerSubtitleStyle,
+              innerBottomStyle: innerBottomStyle,
             ),
           ),
         ),
@@ -117,7 +124,7 @@ class StoryViewIcon extends StatelessWidget {
           if (isBottomTitleVisible)
             Text(
               allStories[index].title,
-              style: const TextStyle(fontSize: 12),
+              style: outerTitleStyle ?? const TextStyle(fontSize: 12),
             ),
         ],
       ),

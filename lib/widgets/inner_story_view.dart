@@ -2,31 +2,36 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
-import 'package:instagram_stories_flutter/constants/constants.dart';
 
-import 'models/last_story_item.dart';
-import 'models/story_item.dart';
+import '../constants/constants.dart';
+import '../instagram_stories_flutter.dart' show Stories, LastStoryItem;
 
+/// This is a single piece of story
+/// Can be multiple inside a story
 class InnerStoryView extends StatefulWidget {
-  ///currently tapped index just for init purpose
+  /// Currently tapped index just for init purpose
   final int index;
 
   final int carouselIndex;
 
-  ///stories to be displayed to the user
+  /// Stories to be displayed to the user
   final List<Stories> allStories;
 
-  ///this is used to store the last opened item by the user for each story
+  /// This is used to store the last opened item by the user for each story
   final List<LastStoryItem> lastOpenedStories;
 
-  ///[CarouselSliderController] is required to switch the user to next page automatically
-  ///or when the user taps on left side of the story - moves backward
-  ///or when the user taps on right side of the story - moves forward
+  /// [CarouselSliderController] is required to switch the user to next page automatically
+  /// Or when the user taps on left side of the story - moves backward
+  /// Or when the user taps on right side of the story - moves forward
   final CarouselSliderController sliderController;
 
-  ///on story icon item tap
-  ///used to set story to be marked as seen by the user
+  /// On story icon item tap
+  /// Used to set story to be marked as seen by the user
   final void Function(int?)? onTap;
+
+  final TextStyle? innerTitleStyle;
+  final TextStyle? innerSubtitleStyle;
+  final TextStyle? innerBottomStyle;
 
   const InnerStoryView({
     super.key,
@@ -36,6 +41,9 @@ class InnerStoryView extends StatefulWidget {
     required this.sliderController,
     required this.onTap,
     required this.lastOpenedStories,
+    required this.innerTitleStyle,
+    required this.innerSubtitleStyle,
+    required this.innerBottomStyle,
   });
 
   @override
@@ -44,13 +52,13 @@ class InnerStoryView extends StatefulWidget {
 
 class _InnerStoryViewState extends State<InnerStoryView>
     with SingleTickerProviderStateMixin {
-  /// this list is needed to show the story based on their data.
+  /// This list is needed to show the story based on their data.
   List<String> stories = [];
 
-  /// this is used to control the page
+  /// This is used to control the page
   final PageController _pageController = PageController();
 
-  ///will be initialized in init
+  /// Will be initialized in init
   int storyIndex = 0;
 
   List<int> times = [];
@@ -60,7 +68,7 @@ class _InnerStoryViewState extends State<InnerStoryView>
 
   @override
   void initState() {
-    ///this functionality is used to maintain the last state of the story
+    /// This functionality is used to maintain the last state of the story
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       currentPage = widget
           .lastOpenedStories[widget.carouselIndex].innerStoryIndex
@@ -74,14 +82,19 @@ class _InnerStoryViewState extends State<InnerStoryView>
         });
       } else*/
       {
-        _pageController.jumpToPage(
-          widget.lastOpenedStories[widget.carouselIndex].innerStoryIndex,
-        );
-        setState(() {
-          currentPage = widget
-              .lastOpenedStories[widget.carouselIndex].innerStoryIndex
-              .toDouble();
-        });
+        try {
+          _pageController.jumpToPage(
+            widget.lastOpenedStories[widget.carouselIndex].innerStoryIndex,
+          );
+
+          setState(() {
+            currentPage = widget
+                .lastOpenedStories[widget.carouselIndex].innerStoryIndex
+                .toDouble();
+          });
+        } catch (e) {
+          log(e.toString());
+        }
       }
     });
     super.initState();
@@ -232,22 +245,27 @@ class _InnerStoryViewState extends State<InnerStoryView>
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 30,
-                      ),
-                      child: Text(
-                        widget.allStories[widget.carouselIndex].storyItems[i]
-                            .title,
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 20),
-                        textAlign: TextAlign.center,
+                  if (widget.allStories[widget.carouselIndex].storyItems[i]
+                          .title !=
+                      null)
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 30,
+                        ),
+                        child: Text(
+                          widget.allStories[widget.carouselIndex].storyItems[i]
+                                  .title ??
+                              '',
+                          style: widget.innerBottomStyle ??
+                              const TextStyle(
+                                  color: Colors.white, fontSize: 20),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
-                  ),
                   Row(
                     children: [
                       Expanded(
@@ -330,17 +348,9 @@ class _InnerStoryViewState extends State<InnerStoryView>
                 ),
               ),
               ListTile(
-                // dense: true,
                 leading: AbsorbPointer(
                   child: Transform.translate(
                     offset: const Offset(0, 4),
-                    // child: StoryViewIcon(
-                    //   // widgetItem: widget.allStories[widget.carouselIndex],
-                    //   lastOpenedStories: widget.lastOpenedStories,
-                    //   index: widget.index,
-                    //   allStories: widget.allStories,
-                    //   isBottomTitleVisible: false,
-                    // ),
                     child: FadeInImage.memoryNetwork(
                       image: widget.allStories[widget.carouselIndex].url,
                       placeholder: kTransparentImage,
@@ -349,7 +359,18 @@ class _InnerStoryViewState extends State<InnerStoryView>
                 ),
                 title: Text(
                   widget.allStories[widget.carouselIndex].title,
+                  style: widget.innerTitleStyle,
                 ),
+                subtitle: widget.allStories[widget.carouselIndex]
+                            .storyItems[currentPage.toInt()].createdDate !=
+                        null
+                    ? Text(
+                        widget.allStories[widget.carouselIndex]
+                                .storyItems[currentPage.toInt()].createdDate ??
+                            '',
+                        style: widget.innerSubtitleStyle,
+                      )
+                    : null,
                 trailing: InkWell(
                   customBorder: const CircleBorder(),
                   onTap: () => Navigator.pop(context),
