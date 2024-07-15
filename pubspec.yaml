@@ -1,7 +1,7 @@
 name: instagram_stories_flutter
 description: "A new Flutter project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/raunaqkalra/instagram_stories_flutter
 
 environment:
   sdk: '>=3.4.3 <4.0.0'

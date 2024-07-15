@@ -35,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
   ///stories to be displayed to the user
   final List<Stories> allStories = [
     Stories(
-      // url:
-      //     'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_recharge.png',
+      url:
+          'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_recharge.png',
       title: 'Mobile Recharge',
       storyItems: [
         StoryItem(
@@ -52,9 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
           createdDate: 'createdDate12',
         ),
       ],
-      customWidget: const Center(
-        child: Text('Test'),
-      ),
     ),
     Stories(
         url:
@@ -74,6 +71,28 @@ class _MyHomePageState extends State<MyHomePage> {
             createdDate: 'createdDate22',
           ),
         ]),
+    Stories(
+      url:
+          'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_recharge.png',
+      title: 'Mobile Recharge',
+      storyItems: [
+        StoryItem(
+          url:
+          'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_electricity_bill.png',
+          title: 'title11',
+          createdDate: null,
+        ),
+        StoryItem(
+          url:
+          'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/Sample/Electricity.png',
+          title: 'title12',
+          createdDate: 'createdDate12',
+        ),
+      ],
+      customWidget: const Center(
+        child: Text('Custom Widget'),
+      ),
+    ),
   ];
 
   @override
