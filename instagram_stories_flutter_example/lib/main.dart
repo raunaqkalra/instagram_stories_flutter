@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_stories_flutter/components/story_view_icon.dart';
-import 'package:instagram_stories_flutter/models/last_story_item.dart';
-import 'package:instagram_stories_flutter/models/story_item.dart';
+import 'package:instagram_stories_flutter/instagram_stories_flutter.dart';
 
 void main() {
   runApp(const MyApp());

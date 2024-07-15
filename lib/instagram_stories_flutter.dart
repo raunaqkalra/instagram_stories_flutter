@@ -1,7 +1,7 @@
 library instagram_stories_flutter;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+/// instagram like stories
+
+export 'package:instagram_stories_flutter/components/story_view_icon.dart';
+export 'package:instagram_stories_flutter/models/last_story_item.dart';
+export 'package:instagram_stories_flutter/models/story_item.dart';
