@@ -13,11 +13,11 @@ dart pub add instagram_stories_flutter
 
 ## Usage StoriesBuilder
 
-<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_default.png" width="240"/>
-<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_partial_seen.png" width="240"/>
-<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_complete_seen.png" width="240"/>
-<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/story_page.png" width="240"/>
-<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/story_animating.png" width="240"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_default.png" width="180"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_partial_seen.png" width="180"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/home_complete_seen.png" width="180"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/story_page.png" width="180"/>
+<img src="https://raw.githubusercontent.com/raunaqkalra/instagram_stories_flutter/master/screenshots/story_animating.png" width="180"/>
 
 ```dart
 
