@@ -35,37 +35,45 @@ class _MyHomePageState extends State<MyHomePage> {
   ///stories to be displayed to the user
   final List<Stories> allStories = [
     Stories(
-        'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_recharge.png',
-        'Mobile Recharge', [
-      StoryItem(
-        url:
-            'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_electricity_bill.png',
-        title: 'title11',
-        createdDate: null,
+      // url:
+      //     'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_recharge.png',
+      title: 'Mobile Recharge',
+      storyItems: [
+        StoryItem(
+          url:
+              'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_electricity_bill.png',
+          title: 'title11',
+          createdDate: null,
+        ),
+        StoryItem(
+          url:
+              'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/Sample/Electricity.png',
+          title: 'title12',
+          createdDate: 'createdDate12',
+        ),
+      ],
+      customWidget: const Center(
+        child: Text('Test'),
       ),
-      StoryItem(
-        url:
-            'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/Sample/Electricity.png',
-        title: 'title12',
-        createdDate: 'createdDate12',
-      ),
-    ]),
+    ),
     Stories(
-        'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_postpaid.png',
-        'Mobile Postpaid', [
-      StoryItem(
         url:
-            'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_Fastag_recharge.png',
-        title: 'title21',
-        createdDate: 'createdDate21',
-      ),
-      StoryItem(
-        url:
-            'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/Sample/Fastag.png',
-        title: 'title22',
-        createdDate: 'createdDate22',
-      ),
-    ]),
+            'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_mobile_postpaid.png',
+        title: 'Mobile Postpaid',
+        storyItems: [
+          StoryItem(
+            url:
+                'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/bill-payments-icon-svgs/ic_Fastag_recharge.png',
+            title: 'title21',
+            createdDate: 'createdDate21',
+          ),
+          StoryItem(
+            url:
+                'https://sa.uat.adanione.com/-/media/Project/Campaigns/PaymentCategory/Sample/Fastag.png',
+            title: 'title22',
+            createdDate: 'createdDate22',
+          ),
+        ]),
   ];
 
   @override
@@ -83,6 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               child: StoriesBuilder(
                 allStories: allStories,
+                // openedStoryColor: Colors.black,
+                // unopenedStoryColor: Colors.green,
               ),
             ),
           ],

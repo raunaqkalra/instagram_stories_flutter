@@ -352,7 +352,7 @@ class _InnerStoryViewState extends State<InnerStoryView>
                   child: Transform.translate(
                     offset: const Offset(0, 4),
                     child: FadeInImage.memoryNetwork(
-                      image: widget.allStories[widget.carouselIndex].url,
+                      image: widget.allStories[widget.carouselIndex].url ?? '',
                       placeholder: kTransparentImage,
                     ),
                   ),

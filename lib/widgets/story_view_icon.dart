@@ -30,6 +30,8 @@ class StoryViewIcon extends StatelessWidget {
   final TextStyle? innerTitleStyle;
   final TextStyle? innerSubtitleStyle;
   final TextStyle? innerBottomStyle;
+  final Color? openedStoryColor;
+  final Color? unopenedStoryColor;
 
   const StoryViewIcon({
     super.key,
@@ -43,6 +45,8 @@ class StoryViewIcon extends StatelessWidget {
     required this.innerTitleStyle,
     required this.innerSubtitleStyle,
     required this.innerBottomStyle,
+    required this.openedStoryColor,
+    required this.unopenedStoryColor,
   });
 
   @override
@@ -74,60 +78,66 @@ class StoryViewIcon extends StatelessWidget {
           ),
         ),
       },
-      child: Column(
-        children: [
-          Flexible(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  height: 70,
-                  width: 70,
-                  padding: EdgeInsets.all(isUnopened ? 2 : 1),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: isUnopened
-                        ? const LinearGradient(
-                            colors: [
-                              Color(0xff2D72AF),
-                              Color(0xffBC466D),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          )
-                        : LinearGradient(
-                            colors: [
-                              Colors.grey.withOpacity(0.5),
-                              Colors.grey.withOpacity(0.5),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
+      child: allStories[index].customWidget ??
+          Column(
+            children: [
+              Flexible(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 70,
+                      padding: EdgeInsets.all(isUnopened ? 2 : 1),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color:
+                            isUnopened ? unopenedStoryColor : openedStoryColor,
+                        gradient: openedStoryColor != null ||
+                                unopenedStoryColor != null
+                            ? null
+                            : isUnopened
+                                ? const LinearGradient(
+                                    colors: [
+                                      Color(0xff2D72AF),
+                                      Color(0xffBC466D),
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  )
+                                : LinearGradient(
+                                    colors: [
+                                      Colors.grey.withOpacity(0.5),
+                                      Colors.grey.withOpacity(0.5),
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                      ),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: ClipOval(
+                          child: FadeInImage.memoryNetwork(
+                            image: allStories[index].url ?? '',
+                            fit: BoxFit.cover,
+                            placeholder: kTransparentImage,
                           ),
-                  ),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: ClipOval(
-                      child: FadeInImage.memoryNetwork(
-                        image: allStories[index].url,
-                        fit: BoxFit.cover,
-                        placeholder: kTransparentImage,
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              if (isBottomTitleVisible) const SizedBox(height: 8),
+              if (isBottomTitleVisible)
+                Text(
+                  allStories[index].title,
+                  style: outerTitleStyle ?? const TextStyle(fontSize: 12),
+                ),
+            ],
           ),
-          if (isBottomTitleVisible) const SizedBox(height: 8),
-          if (isBottomTitleVisible)
-            Text(
-              allStories[index].title,
-              style: outerTitleStyle ?? const TextStyle(fontSize: 12),
-            ),
-        ],
-      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'instagram_stories_flutter.dart';
 
 /// Story builder to build a list of story widget
 class StoriesBuilder extends StatefulWidget {
+  /// All stories to be displayed to the user
   final List<Stories> allStories;
 
   /// Text style assigned to title below the main story icon
@@ -18,14 +19,29 @@ class StoriesBuilder extends StatefulWidget {
   /// Text style assigned to bottom inside the story
   final TextStyle? innerBottomStyle;
 
+  final Color? openedStoryColor;
+  final Color? unopenedStoryColor;
+
   /// Story builder to build a list of story widget
   const StoriesBuilder({
     super.key,
+
+    /// All stories to be displayed to the user
     required this.allStories,
+
+    /// Text style assigned to title below the main story icon
     this.outerTitleStyle,
+
+    /// Text style assigned to header title inside the story
     this.innerTitleStyle,
+
+    /// Text style assigned to subtitle inside the story
     this.innerSubtitleStyle,
+
+    /// Text style assigned to bottom inside the story
     this.innerBottomStyle,
+    this.openedStoryColor,
+    this.unopenedStoryColor,
   });
 
   @override
@@ -77,6 +93,8 @@ class _StoriesBuilderState extends State<StoriesBuilder> {
         innerTitleStyle: widget.innerTitleStyle,
         innerSubtitleStyle: widget.innerSubtitleStyle,
         innerBottomStyle: widget.innerBottomStyle,
+        openedStoryColor: widget.openedStoryColor,
+        unopenedStoryColor: widget.unopenedStoryColor,
       ),
       separatorBuilder: (context, index) => const SizedBox(width: 20),
       itemCount: widget.allStories.length,
